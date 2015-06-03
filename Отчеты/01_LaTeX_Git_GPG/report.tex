@@ -1,13 +1,309 @@
-\documentclass[10pt,a4paper]{article}
+\documentclass[a4paper, 12pt]{article}
+
 \usepackage[utf8]{inputenc}
 \usepackage[russian]{babel}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{graphicx}
-\author{Имя Фамилия}
+\usepackage{hyperref}
+
+
+\author{Баринов Дмитрий}
 \title{Отчет по лабораторной работе}
+
 \begin{document}
-\maketitle
+
+
+\begin{titlepage} \begin{center}
+
+	\Large			
+Санкт-Петербургский политехнический университет Петра Великого
+			
+	\vspace{0.2cm}	
+Институт Информационных технологий и управления
+
+	\vspace{2cm} \vfill \huge
+Система верстки \TeX{} и рассширение \LaTeX{}
+
+\vfill 
+
+\begin{flushleft} \large \hangindent=8cm \hangafter=0
+Выполнил: Баринов Д.С. гр. 53501/3 \hrulefill
+
+Приняла: Вылегжанина К.Д. \hrulefill
+\end{flushleft}
+
+		
+\vspace{2cm} \vfill \large
+2015 г.
+		
+
+\end{center} \end{titlepage}
+
+\newpage
+
+\section{Система верстки \TeX{} и рассширение \LaTeX{}}
+
+\subsection{Цель работы}
+
+Изучение принципов верстки \TeX{}, создание первого отчета 
+
+\subsection{Ход работы}
+
+\subsubsection{Компиляция в командной строке}
+
+
+Результатом работы Latex является файл в формате DVI - промежуточный формат для представления графического документа.
+
+Команда: latex report.tex
+
+Утилита xdvi позволяет отобразить DVI-файл.
+
+Команда: xdvi report.dvi
+
+Утилита pdflatex предназначена для трансляции tex файла напрямую в pdf.
+
+Команда: pdflatex report.tex
+
+\subsubsection{Оболочка TexMaker}
+
+TexMaker - это удобная графическая оболочка для LaTex.
+
+С его помощью можно быстро создать бланк документа, обратившись к помощнику и выбрав пункт меню "Быстрый старт". Далее пользователю будет предложено указать несколько основных настроек (тип документа, кодировка, используемые пакеты и т.п.) на основании которых будет сформирована начальная версия документа.
+
+Также редактор предоставляет возможности полуавтоматического редактирования текста. Некоторые частоиспользуемые модификаторы вынесены в кнопки меню. Таким образом, изменить текст, например, сделав его жирным, можно также как и в более привычных редакторах. Для этого необходимо выделить текст и нажать на соответсвующую кнопку.
+
+Главным преимуществом графического редактора является функция быстрой сборки. С ее помощью можно сразу же собрать документ и отобразить в соседней части экрана.
+
+\subsubsection{Создание титульного листа, нескольких разделов, списка, несложной формулы}
+
+Создание титульного листа и  разделов продемонстрировано выше.
+
+Пример формулы и список приведены ниже:
+\begin{enumerate}
+\item Элемент 1
+\item Формула 1: $$ x^2+y^2=z $$
+\item Вложенный список
+	\begin{itemize}
+	\item Пункт 1
+	\item Пункт 2
+	\item Пункт 3
+	\end{itemize}
+\end{enumerate}
+
+\subsubsection{Понятие классов документов, подключаемых модулей}
+
+\LaTeX{} -файл должен начинаться с команды \textbackslash documentclass. 
+
+Данная команда задает стиль оформления документа. В стандартый пакет входят такие стили как article, book, report, letter, proc. \\
+Класс article удобно применять для статей, report - для более крупных статей, разбитых на главы, класс book - для книг.
+
+Кроме того, имеется в \LaTeX имеется возможность включения стилевых пакетов, доспускающих задание своих личных стилевых опций. Включение стилвого пакета осуществляется командой \textbackslash usepackage.
+
+Пример:
+
+\begin{verbatim}
+\usepackage[russian]{babel} % Пакет поддержки русского языка
+\end{verbatim}
+
+\subsection{Выводы}
+
+\LaTeX{} наиболее популярный набор макрорасширений (или макропакет) системы компью-
+терной вёрстки TEX, который облегчает набор сложных документов.
+Пакет позволяет автоматизировать многие задачи набора текста и подготовки статей,
+включая набор текста на нескольких языках, нумерацию разделов и формул, перекрёстные
+ссылки, размещение иллюстраций и таблиц на странице, ведение библиографии и др.
+
+\newpage
+\section{Система контроля версий Git}
+
+\subsection{Цель работы}
+
+Изучить систему контроля версий Git, освоить основные приёмы работы с ней.
+
+\subsection{Ход работы}
+
+\begin{itemize}
+
+\item{Получить содержимое репозитория
+\begin{verbatim}git clone https://github.com/Kiker1/InfoSec2015.git 
+\end{verbatim}}
+
+
+\item{Добавить новую папку и первого файла под контроль версий
+\begin{verbatim}
+mkdir someDir
+cd somedir
+echo test>> somefile.txt
+git add .
+\end{verbatim}}
+
+\item{Зафиксировать изменения в локальном репозитории
+\begin{verbatim}
+git commit -a -m "test" 
+\end{verbatim}}
+
+\item{Внести изменения в файл и просмотреть различия
+\begin{verbatim}
+echo test2 >> somefile.txt
+git diff master:./somefile.txt ./somefile.txt
+\end{verbatim}}
+
+\item{Отменить локальные изменения
+\begin{verbatim}
+git reset HEAD ./somefile.txt
+git checkout ./somefile.txt
+\end{verbatim}}
+
+\item{Внести изменения в файл и просмотреть различия
+\begin{verbatim}
+echo lalalal >> somefile.txt
+git diff master:./somefile.txt ./somefile.txt
+\end{verbatim}}
+
+\item{Зафиксировать изменения в локальном репозитории, зафиксировать изменения в
+центральном репозитории
+\begin{verbatim}
+git commit -a -m "update"
+git push
+\end{verbatim}}
+
+
+\item{Поэкспериментировать с ветками
+\begin{verbatim}
+git branch test
+git checkout test
+git merge test
+\end{verbatim}}
+\end{itemize}
+
+\subsection{Выводы}
+Git -- это распределенная система контроля версий. Это означает, что кроме контроля версий git также предоставляет возможность удобной одновременной работы с репозиторием целой команды участников.
+
+\newpage
+
+\section{Cоздание электронных цифровых подписей c PGP}
+
+\subsection{Цель работы}
+
+Научиться создавать сертификаты, шифровать файлы и ставить ЭЦП.
+
+\subsection{Ход работы}
+
+\subsubsection{Изучить документацию, запустить графическую оболочку Kleopatra}
+
+GPG4Win - набор программ, и руководств для осуществления подписи и шифровки документов.
+
+Включает в себя:
+
+\begin{enumerate}
+\item GnuPG - программа шифрования
+\item Kleopatra - графическая оболочка
+\item GNU Privacy Assistant (GPA) - графическая оболочка (альтернатива)
+\item GnuPG for Outlook (GpgOL) - расширение Microsoft Outlook для шифрования и подписи сообщений
+\item GPG Explorer eXtension (GpgEX) - расширение Windows Explore для шифрования и подписи файлов используя контекстное меню
+\item Claws Mail - полноценная программа для работы с почтой, предлагающая хорошую поддержку GnuPG
+\end{enumerate}
+
+\subsubsection{Создание ключевой пары}
+
+Для создания ключевой пары необходимо выбрать пункт меню File - New Certificate - Create Personal OpenPGP key pair. 
+
+\subsubsection{Экспорт сетрификата}
+
+Для экспорта сертификата необходимо вызвать контекстное меню на сертификате и выбрать пункт Export Certificates. Данный сертификат был экспортирован в корень репозитория.
+
+\subsubsection{Поставить ЭЦП на файл}
+
+Используя графическую оболочку Kleopatra поставим подпись на файл messageToSuhinin.txt через меню File - Sign/Encrypt Files. Далее необходимо выбрать файл и указать тип действия (шифрование, подпись, оба). Полученный файл находится рядом с оригиналом  и называется messageToSuhinin.txt.sig.
+
+
+\subsubsection{Получить чужой сертификат из репозитория}
+
+Из каталога 
+\url{https://github.com/vilegzhanina/InfoSecCourse2015/tree/master/%D0%9E%D1%82%D1%87%D0%B5%D1%82%D1%8B/01_LaTeX_Git_GPG}
+были скачаны файлы karina.asc, myfirst.pdf, myfirst.pdf.sig. 
+
+\subsubsection{Импортировать сертификат, подписать его}
+
+Используя меню File - Import Certificates графической оболочки Kleopatra импортируем сертификат. Далее вызываем контекстное меню на сертификате и выбираем пункт Certify Cerificate. Этим действием мы подтверждаем свое доверие к источнику. В случае, если все прошло успешно, сертификат перейдет во вкладку Trusted Certificates.
+
+
+\subsubsection{Проверить подпись}
+
+Проверим подпись с помощью графической оболочки Kleopatra: выбрать пункт меню File - Decrypt/Verify File и указать файл подписи. 
+
+В случае успешной проверки будет выведено сообщение The signature is valid and the certificate's validity is fully trusted. А также показаны данные подписавшего.  Для файла myfirst.pdf.sig данные выглядят следующим образом:
+
+Signed on 2015-02-16 10:57 by k.vilegzhanina@gmail.com (Key ID: 0x391EA659).
+The signature is valid and the certificate's validity is fully trusted.
+
+\subsubsection{Взять сертификат кого-либо из коллег, зашифровать и подписать для него какой-либо текст, предоставить свой сертификат, убедиться, что ему удалось получить открытый текст, проверить подпись}
+
+Для примера был взят сертификат Сухинина А.А. и импортирован согласно предыдущим пунктам. (файл cert.asc)
+
+Далее, файл messageToSuhinin.txt был подписан и зашифрован для: 
+\begin{itemize}
+\item{barinovdmitrii@gmail.com} 
+\item{suhininalex@gmail.com}
+\item{k.vilegzhanina@gmail.com}
+\end{itemize}
+
+и отправлен Сухинину А.А., который подтвердил получение и успешную рашифровку и подпись.
+
+\subsubsection{Предыдущий пункт наоборот}
+
+Был взят файл, предоставленный Сухинином А.А. - messageToBarinov.txt.gpg.  Используя графический интерфейс Kleopatra данный файл был успешно расшифрован и проверена подпись. 
+
+Текст сообщения: "Как поживает твоя сессия?" 
+
+Signed on 2015-05-24 22:00 by suhininalex@gmail.com (Key ID: 0x2AB8346A).
+The signature is valid and the certificate's validity is fully trusted.
+
+
+\subsubsection{Использовании gpg через интерфейс командной строки}
+
+Результат, полученный при помощи Kleopatra легко повторить используя терминал. 
+
+\begin{itemize}
+
+
+\item Генерация ключа происходит в диалоговом режиме после ввода команды
+
+\begin{verbatim}
+gpg --gen-key
+\end{verbatim}
+
+В процессе работы, мастер создания ключа запросит следующую информацию:
+
+\begin{itemize}
+\item{Тип ключа}
+\item{Размер ключа}
+\item{Время жизни ключа}
+\item{Информацию о пользователе}
+\item{Пароль для ключа}
+\end{itemize}
+
+\item Экспорт сертификата:
+
+gpg --armor --export barinovdmitrii@gmail.com
+
+\item Подпись файла:
+
+gpg --detach-sign messageToSuhinin.txt
+
+\item Проверка подписи:
+
+gpg --verify messageToSuhinin.txt.sig
+
+
+\end{itemize}
+
+\subsection{Выводы}
+
+В ходе работы были опробованы основные возможности GPG4win. Создание пары ключей, сохранение и экспорт сертификата, импорт сертификатов и их проверка, подпись и проверка подписи файлов, шифрование и расшифровка файлов. В ходе работы был опробован графический интерфейс Kleopatra и расширение GpgEX. Некоторые основные команды были также опробованы в консоли.
+
+Общие впечатления от использования пакета Gpg - весьма положительные. Интерфейс Клеопатры удобен, а команды консоли интуитивно понятны и просты. 
 
 \end{document}
