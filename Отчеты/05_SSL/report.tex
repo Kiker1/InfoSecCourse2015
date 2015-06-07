@@ -147,6 +147,26 @@ Incorrect SNI alerts	-
 Uses common DH prime	No
 SSL 2 handshake compatibility	No
 \end{verbatim}
+\begin{itemize}
+\item Secure Renegotiation - Хранение доп параметров о TLS соединении.
+\item BEAST attack - защита от BEAST атаки.
+\item POODLE (SSLv3) - защита от пуделя по SSLv3.
+\item POODLE (TLS) - защита от пуделя по TLS.
+\item Downgrade attack prevention - защита от downgrade атаки.
+\item TLS compression - сжатие данных по tls.
+\item RC4 - использование алгоритма шифрования RC4
+\item Heartbleed - защита от уязвимости Heartbleed.
+\item OpenSSL CCS vuln. - SSL ChangeCipherSpec уязвимость.
+\item Forward Secrecy - защищенный обмен без приватного ключа сервера.
+\item Next Protocol Negotiation - расширение SSL, позволяющее договариваться о протоколе соединения.
+\item OCSP - Online Certificate Status Protocol проверка валидности сертификата.
+\item Strict Transport Security (HSTS) - механизм, активирующий форсированное защищённое соединение по HTTPS.
+\item Public Key Pinning (HPKP) - фиксирует привязку публичного ключа к даннолму узлу.
+\item Long handshake intolerance - поддержка длинных(больще 256 байт) handshake сообщений.
+\item TLS extension intolerance - поддержка TLS расширений.
+\item Incorrect SNI alerts - предупреждение при некорректном Server Name Indication.
+\end{itemize}
+
 
 \subsection{Сделать итоговый вывод о реализации SSL на заданном домене}
 На данном домене (ica-corp.ica.com (72.167.40.106)) ssl реализован ддостаточно хорошо: существует защита  от Downgrade attack, Beast attack, POODLE (SSLv3) и  POODLE (TLS). Единственным недостатком можно назвать отсутствие поддержки Forward Secrecy.
